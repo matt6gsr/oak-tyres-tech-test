@@ -5,20 +5,27 @@ import TaskList from "./components/TaskList";
 import { Task } from "./types";
 
 const App: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [newTask, setNewTask] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Check for saved tasks in localStorage
-  useEffect(() => {
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    // Check for saved tasks in localStorage
     const savedTasks = localStorage.getItem("tasks");
-    if (savedTasks) setTasks(JSON.parse(savedTasks));
-  }, []);
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+  const [newTask, setNewTask] = useState("");
 
-  // Save tasks to localStorage when updated
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    // Load from localStorage first, fall back to system preference if not set
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode
+      ? JSON.parse(savedMode)
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
   useEffect(() => {
+    // Save tasks to localStorage
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    // Save dark mode preference
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+  }, [tasks, isDarkMode]);
 
   const addTask = (e: React.FormEvent) => {
     e.preventDefault();
