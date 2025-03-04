@@ -27,3 +27,12 @@ export interface TaskListProps {
   updateTaskStatus: (id: number, status: Task["status"]) => void;
   deleteTask: (id: number) => void;
 }
+
+export interface DeleteButtonProps {
+  onDelete: () => void;
+}
+
+export interface ExpandButtonProps {
+  isCompact: boolean;
+  onToggle: () => void;
+}

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Task, TaskCardProps } from "../types";
+import DeleteButton from "./DeleteButton";
+import ExpandButton from "./ExpandButton";
 
 const TaskCard: React.FC<TaskCardProps> = ({
   task,
@@ -33,15 +35,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
               {task.title}
             </h3>
             {!isCompact && (
-              <button
-                onClick={toggleView}
-                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-sm sm:text-base transition-colors duration-300 ml-2"
-                aria-label={
-                  isCompact ? "Expand task details" : "Collapse task details"
-                }
-              >
-                {isCompact ? "▼" : "▲"}
-              </button>
+              <ExpandButton isCompact={isCompact} onToggle={toggleView} />
             )}
           </div>
           <div
@@ -68,21 +62,13 @@ const TaskCard: React.FC<TaskCardProps> = ({
               onChange={(e) =>
                 onUpdateStatus(task.id, e.target.value as Task["status"])
               }
-              className="w-full sm:w-auto text-sm p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
+              className="w-auto text-sm p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
             >
               <option value="Pending">Pending</option>
               <option value="In Progress">In Progress</option>
               <option value="Completed">Completed</option>
             </select>
-            <button
-              onClick={toggleView}
-              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-sm sm:text-base transition-colors duration-300 ml-2"
-              aria-label={
-                isCompact ? "Expand task details" : "Collapse task details"
-              }
-            >
-              {isCompact ? "▼" : "▲"}
-            </button>
+            <ExpandButton isCompact={isCompact} onToggle={toggleView} />
           </div>
         )}
       </div>
@@ -99,19 +85,13 @@ const TaskCard: React.FC<TaskCardProps> = ({
             onChange={(e) =>
               onUpdateStatus(task.id, e.target.value as Task["status"])
             }
-            className="w-full sm:w-auto text-sm p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
+            className="w-auto text-sm p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
           >
             <option value="Pending">Pending</option>
             <option value="In Progress">In Progress</option>
             <option value="Completed">Completed</option>
           </select>
-          <button
-            onClick={handleDelete}
-            aria-label="Delete task"
-            className="text-2xl"
-          >
-            🗑️
-          </button>
+          <DeleteButton onDelete={handleDelete} />
         </div>
       )}
     </div>
