@@ -49,3 +49,8 @@ export interface TaskStatusSelectProps {
   onStatusChange: (status: Task["status"]) => void;
   theme: Theme;
 }
+
+export interface ThemeSelectProps {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+}
