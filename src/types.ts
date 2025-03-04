@@ -36,3 +36,8 @@ export interface ExpandButtonProps {
   isCompact: boolean;
   onToggle: () => void;
 }
+
+export interface TaskStatusSelectProps {
+  status: Task["status"];
+  onStatusChange: (status: Task["status"]) => void;
+}
