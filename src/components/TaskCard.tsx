@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Task, TaskCardProps } from "../types";
 import DeleteButton from "./DeleteButton";
 import ExpandButton from "./ExpandButton";
+import TaskStatusSelect from "./TaskStatusSelect";
 
 const TaskCard: React.FC<TaskCardProps> = ({
   task,
   onUpdateStatus,
-  onDelete
+  onDelete,
+  theme
 }) => {
   const [isExiting, setIsExiting] = useState(false);
   const [isCompact, setIsCompact] = useState(true);
@@ -18,6 +20,10 @@ const TaskCard: React.FC<TaskCardProps> = ({
 
   const toggleView = () => {
     setIsCompact(!isCompact);
+  };
+
+  const handleStatusChange = (status: Task["status"]) => {
+    onUpdateStatus(task.id, status);
   };
 
   return (
@@ -57,17 +63,11 @@ const TaskCard: React.FC<TaskCardProps> = ({
         </div>
         {isCompact && (
           <div className="flex items-center gap-2">
-            <select
-              value={task.status}
-              onChange={(e) =>
-                onUpdateStatus(task.id, e.target.value as Task["status"])
-              }
-              className="w-auto text-sm p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
-            >
-              <option value="Pending">Pending</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Completed">Completed</option>
-            </select>
+            <TaskStatusSelect
+              status={task.status}
+              onStatusChange={handleStatusChange}
+              theme={theme}
+            />
             <ExpandButton isCompact={isCompact} onToggle={toggleView} />
           </div>
         )}
@@ -80,17 +80,11 @@ const TaskCard: React.FC<TaskCardProps> = ({
               : "opacity-100 scale-y-100 h-auto"
           }`}
         >
-          <select
-            value={task.status}
-            onChange={(e) =>
-              onUpdateStatus(task.id, e.target.value as Task["status"])
-            }
-            className="w-auto text-sm p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
-          >
-            <option value="Pending">Pending</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-          </select>
+          <TaskStatusSelect
+            status={task.status}
+            onStatusChange={handleStatusChange}
+            theme={theme}
+          />
           <DeleteButton onDelete={handleDelete} />
         </div>
       )}

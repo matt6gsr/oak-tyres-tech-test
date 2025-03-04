@@ -5,7 +5,8 @@ import { TaskListProps } from "../types";
 const TaskList: React.FC<TaskListProps> = ({
   tasks,
   updateTaskStatus,
-  deleteTask
+  deleteTask,
+  theme
 }) => {
   return (
     <main className="p-4 w-full max-w-2xl mx-auto flex-1 overflow-y-auto">
@@ -16,6 +17,7 @@ const TaskList: React.FC<TaskListProps> = ({
             task={task}
             onUpdateStatus={updateTaskStatus}
             onDelete={deleteTask}
+            theme={theme}
           />
         ))}
       </div>
