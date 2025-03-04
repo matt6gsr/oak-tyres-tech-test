@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
-import { Task } from "./types";
+import { Task, Theme } from "./types";
 import { format } from "date-fns";
 
 const App: React.FC = () => {
@@ -21,12 +21,19 @@ const App: React.FC = () => {
       : window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
+  const [theme, setTheme] = useState<Theme>(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return (savedTheme as Theme) || "light-blue"; // Default to light-blue
+  });
+
   useEffect(() => {
     // Save tasks to localStorage
     localStorage.setItem("tasks", JSON.stringify(tasks));
     // Save dark mode preference
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-  }, [tasks, isDarkMode]);
+    // Save theme preference to localStorage
+    localStorage.setItem("theme", theme);
+  }, [tasks, isDarkMode, theme]);
 
   const addTask = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,12 +66,20 @@ const App: React.FC = () => {
         <Header
           isDarkMode={isDarkMode}
           toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+          theme={theme}
+          setTheme={setTheme}
         />
-        <TaskForm newTask={newTask} setNewTask={setNewTask} addTask={addTask} />
+        <TaskForm
+          newTask={newTask}
+          setNewTask={setNewTask}
+          addTask={addTask}
+          theme={theme}
+        />
         <TaskList
           tasks={tasks}
           updateTaskStatus={updateTaskStatus}
           deleteTask={deleteTask}
+          theme={theme}
         />
       </div>
     </div>
