@@ -54,3 +54,8 @@ export interface ThemeSelectProps {
   theme: Theme;
   setTheme: (theme: Theme) => void;
 }
+
+export interface DarkModeToggleProps {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}
