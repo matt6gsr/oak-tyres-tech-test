@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import { Task } from "./types";
+import { format } from "date-fns";
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(() => {
@@ -35,7 +36,8 @@ const App: React.FC = () => {
       {
         id: Date.now(),
         title: newTask,
-        status: "Pending"
+        status: "Pending",
+        createdAt: format(new Date(), "dd/MM/yyyy HH:mm:ss")
       }
     ]);
     setNewTask("");

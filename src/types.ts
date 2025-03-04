@@ -2,6 +2,7 @@ export interface Task {
   id: number;
   title: string;
   status: "Pending" | "In Progress" | "Completed";
+  createdAt: string;
 }
 
 export interface TaskCardProps {
