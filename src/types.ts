@@ -5,27 +5,34 @@ export interface Task {
   createdAt: string;
 }
 
-export interface TaskCardProps {
-  task: Task;
-  onUpdateStatus: (id: number, status: Task["status"]) => void;
-  onDelete: (id: number) => void;
-}
+export type Theme = "light-blue" | "red" | "green" | "orange";
 
 export interface HeaderProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 }
 
 export interface TaskFormProps {
   newTask: string;
   setNewTask: (value: string) => void;
   addTask: (e: React.FormEvent) => void;
+  theme: Theme;
 }
 
 export interface TaskListProps {
   tasks: Task[];
   updateTaskStatus: (id: number, status: Task["status"]) => void;
   deleteTask: (id: number) => void;
+  theme: Theme;
+}
+
+export interface TaskCardProps {
+  task: Task;
+  onUpdateStatus: (id: number, status: Task["status"]) => void;
+  onDelete: (id: number) => void;
+  theme: Theme;
 }
 
 export interface DeleteButtonProps {
@@ -40,4 +47,5 @@ export interface ExpandButtonProps {
 export interface TaskStatusSelectProps {
   status: Task["status"];
   onStatusChange: (status: Task["status"]) => void;
+  theme: Theme;
 }
