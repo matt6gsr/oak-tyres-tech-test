@@ -8,7 +8,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
 }) => {
   return (
     <form onSubmit={addTask} className="p-4 w-full max-w-2xl mx-auto shrink-0">
-      <div className="flex flex-col sm:flex-row gap-2">
+      <div className="flex flex-col sm:flex-row gap-2 items-center">
         <input
           type="text"
           value={newTask}
@@ -18,7 +18,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
         />
         <button
           type="submit"
-          className="w-full sm:w-auto px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors whitespace-nowrap"
+          className="w-28 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors whitespace-nowrap"
         >
           Add Task
         </button>
