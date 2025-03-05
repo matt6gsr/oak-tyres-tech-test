@@ -1,54 +1,31 @@
-# React + TypeScript + Vite
+OAK TYRES TECH TEST
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+How to install and run the app:
 
-Currently, two official plugins are available:
+1: Visit https://github.com/matt6gsr/oak-tyres-tech-test and clone the repo.
+Alternatively paste this command into your terminal;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`git clone https://github.com/matt6gsr/oak-tyres-tech-test.git`
 
-## Expanding the ESLint configuration
+2: CD into oak-tyres-tech-test
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3: Run `npm install` from the terminal
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4: Once complete, run `npm run dev` from the terminal
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+5: The Oak Tyres Task Manager app will be available at `http://localhost:5174/` from your browser of choice.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Libraries and Tools used:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The project is built with React and Vite.
+Typescript has been used throughout.
+Date-fns has been used to format the `Created At` date/time of the task.
+Transitions were created using only TailwindCss.
+
+Design Decisions and Considerations:
+
+A simple, clean design was used with a clear UX and easy-to-use functionality. Icons were used for the dark mode toggle and delete task to add a bit of fun.
+Accessability has been covered with aria labels where required.
+Mobile screen has been accommodated.
+
+Thank you.
