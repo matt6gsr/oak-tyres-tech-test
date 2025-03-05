@@ -1,2 +1,8 @@
 @import "tailwindcss";
+
+/**
+ custom-variant for dark mode
+ This may show an error in your IDE, but it's valid CSS.
+ The error is because the IDE doesn't know about the custom-variant directive.
+ */
 @custom-variant dark (&:where(.dark, .dark *));
