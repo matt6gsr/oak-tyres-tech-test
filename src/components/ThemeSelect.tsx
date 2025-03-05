@@ -7,6 +7,7 @@ const ThemeSelect: React.FC<ThemeSelectProps> = ({ theme, setTheme }) => {
   return (
     <select
       value={theme}
+      aria-label="Theme selector"
       onChange={(e) => setTheme(e.target.value as Theme)}
       className={`p-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-${
         theme === "light-blue" ? "blue-400" : `${theme}-500`
