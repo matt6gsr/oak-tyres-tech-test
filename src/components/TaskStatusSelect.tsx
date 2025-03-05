@@ -9,6 +9,7 @@ const TaskStatusSelect: React.FC<TaskStatusSelectProps> = ({
   return (
     <select
       value={status}
+      aria-label="Task status selector"
       onChange={(e) => onStatusChange(e.target.value as Task["status"])}
       className={`w-auto p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-${
         theme === "light-blue" ? "blue-400" : `${theme}-500`

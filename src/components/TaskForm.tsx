@@ -22,12 +22,14 @@ const TaskForm: React.FC<TaskFormProps> = ({
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Add a new task..."
+          aria-label="New task input"
           className={`w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-${
             theme === "light-blue" ? "blue-400" : `${theme}-500`
           } transition-colors duration-300`}
         />
         <button
           type="submit"
+          aria-label="Add task button"
           className={`w-28 py-2 text-white rounded-lg transition-colors duration-300 ${buttonStyles[theme]}`}
         >
           Add Task
